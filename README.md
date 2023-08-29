@@ -17,4 +17,4 @@
 - [x] [滚动哈希](https://github.com/YakultGo/algorithm/blob/main/%E6%BB%9A%E5%8A%A8%E5%93%88%E5%B8%8C.md)
 - [x] [空格分割字符串](https://github.com/YakultGo/algorithm/blob/main/%E7%A9%BA%E6%A0%BC%E5%88%86%E5%89%B2%E5%AD%97%E7%AC%A6%E4%B8%B2.md)
 - [x] [素数筛选](https://github.com/YakultGo/algorithm/blob/main/%E7%B4%A0%E6%95%B0%E7%AD%9B%E9%80%89.md)
-- [x] [倍增算法](https://github.com/YakultGo/algorithm/blob/main/%E6%A0%91%E4%B8%8A%E5%80%8D%E5%A2%9E.md)
+- [x] [倍增算法](https://github.com/YakultGo/algorithm/blob/main/%E5%80%8D%E5%A2%9E%E7%AE%97%E6%B3%95.md)
