@@ -6,18 +6,18 @@ public:
     long long countSpecialNumbers(int n) {
         auto s = to_string(n);
         long long m = s.length(), memo[m][1 << 10];
-        memset(memo, -1, sizeof(memo)); // -1 表示没有计算过
+        memset(memo, -1, sizeof(memo));
         function<long long(int, int, bool, bool)> f = [&](int pos, int mask, bool is_limit, bool is_num) -> long long {
             if (pos == m)
-                return is_num; // is_num 为 true 表示得到了一个合法数字
+                return is_num; 
             if (!is_limit && is_num && memo[pos][mask] != -1)
                 return memo[pos][mask];
             long long res = 0;
-            if (!is_num) // 可以跳过当前数位
+            if (!is_num)
                 res = f(pos + 1, mask, false, false);
-            int up = is_limit ? s[pos] - '0' : 9; // 如果前面填的数字都和 n 的一样，那么这一位至多填数字 s[pos]（否则就超过 n 啦）
-            for (int d = 1 - is_num; d <= up; ++d) // 枚举要填入的数字 d
-                if ((mask >> d & 1) == 0) // d 不在 mask 中
+            int up = is_limit ? s[pos] - '0' : 9; 
+            for (int d = 1 - is_num; d <= up; ++d) 
+                if ((mask >> d & 1) == 0) 
                     res += f(pos + 1, mask | (1 << d), is_limit && d == up, true);
             if (!is_limit && is_num)
                 memo[pos][mask] = res;
@@ -61,7 +61,6 @@ public:
                     res = dfs(i + 1, limit_low && x == lo, limit_high && x == hi);
                 }
             }
-
             if (!limit_low && !limit_high) {
                 memo[i] = res; // 记忆化 (i,false,false)
             }
