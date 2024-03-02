@@ -1,5 +1,7 @@
 #### LCA模板
 
+#### 倍增
+
 ```c++
 #include <bits/stdc++.h>
 #define endl '\n'
@@ -73,4 +75,50 @@ int main() {
 }
 ```
 
-LCA
+#### 树链剖分
+
+```c++
+#include <bits/stdc++.h>
+#define endl '\n'
+using namespace std;
+using ll = long long;
+const int N = 1e5 + 10;
+vector<int> e[N];
+int fa[N], dep[N], sz[N], son[N], w[N];
+int top[N], in[N], out[N], rnk[N], cnt;
+
+void dfs1(int u, int father) {
+    fa[u] = father, dep[u] = dep[father] + 1, sz[u] = 1;
+    for (int v : e[u]) {
+        if (v == father) continue;
+        dfs1(v, u);
+        sz[u] += sz[v];
+        if (sz[son[u]] < sz[v]) son[u] = v;
+    }
+}
+void dfs2(int u, int t) {
+    top[u] = t, in[u] = ++cnt, rnk[cnt] = u;
+    if (!son[u]) {
+        out[u] = cnt;
+        return;
+    }
+    dfs2(son[u], t);
+    for (int v : e[u]) {
+        if (v == fa[u] || v == son[u]) continue;
+        dfs2(v, v);
+    }
+    out[u] = cnt;
+}
+
+int lca(int u, int v) {
+    while (top[u] != top[v]) {
+        if (dep[top[u]] < dep[top[v]])
+            swap(u, v);
+        u = fa[top[u]];
+    }
+    return dep[u] < dep[v] ? u : v;
+}
+```
+
+#### Tarjan
+
