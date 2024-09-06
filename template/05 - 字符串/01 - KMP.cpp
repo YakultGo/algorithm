@@ -10,7 +10,7 @@ struct KMP {
         }
         return pi;
     }
-    vector<int> kmp(string &text, string &pattern) {
+    vector<int> work(string &text, string &pattern) {
         vector<int> pi = prefix_function(pattern);
         vector<int> res;
         int c = 0, m = pattern.size();
