@@ -1,6 +1,7 @@
 template <typename T>
 struct BIT {
     vector<T> tr;
+    BIT() {}
     BIT(int n) : tr(n + 10, 0) {}
     static inline int lowbit(int x) {
         return x & (-x);
