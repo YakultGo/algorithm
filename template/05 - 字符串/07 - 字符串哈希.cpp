@@ -3,7 +3,6 @@ struct Hash {
     int n{};
     vector<ll> M1, M2, h1, h2;
     ll p1 = 131, p2 = 13331;
-    Hash() {}
     Hash(string &s) {
         Init(s);
     }

@@ -1,5 +1,5 @@
 struct KMP {
-    vector<int> prefix_function(string &s) {
+    vector<int> nex(string &s) {
         int n = s.size();
         vector<int> pi(n);
         for (int i = 1; i < n; i++) {
@@ -11,20 +11,15 @@ struct KMP {
         return pi;
     }
     vector<int> work(string &text, string &pattern) {
-        vector<int> pi = prefix_function(pattern);
+        vector<int> pi = nex(pattern);
         vector<int> res;
-        int c = 0, m = pattern.size();
+        int j = 0, m = pattern.size();
         for (int i = 0; i < text.size(); i++) {
-            char v = text[i];
-            while (c && pattern[c] != v) {
-                c = pi[c - 1];
-            }
-            if (pattern[c] == v) {
-                c++;
-            }
-            if (c == m) {
+            while (j > 0 && text[i] != pattern[j]) j = pi[j - 1];
+            if (text[i] == pattern[j]) j++;
+            if (j == m) {
                 res.push_back(i - m + 1);
-                c = pi[c - 1];
+                j = pi[j - 1];
             }
         }
         return res;
