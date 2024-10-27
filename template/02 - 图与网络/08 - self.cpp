@@ -1,11 +1,7 @@
 const int N = 1e5 + 10;
-int parent[N], dep[N], sz[N], son[N], top[N], in[N], out[N], rnk{N};
+int parent[N], dep[N], sz[N], son[N], top[N], in[N], out[N], rnk[N];
 vector<vector<int>> adj;
 int cnt = 0;
-void work(int root = 1) {
-    dfs1(root, 0);
-    dfs2(root, root);
-}
 void dfs1(int x, int fa) {
     parent[x] = fa;
     dep[x] = dep[fa] + 1;
@@ -39,4 +35,12 @@ int lca(int u, int v) {
         u = parent[top[u]];
     }
     return dep[u] < dep[v] ? u : v;
+}
+int dis(int u, int v) {
+    return dep[u] + dep[v] - 2 * dep[lca(u, v)];
+}
+void work(int root = 1) {
+    dep[0] = -1;
+    dfs1(root, 0);
+    dfs2(root, root);
 }
