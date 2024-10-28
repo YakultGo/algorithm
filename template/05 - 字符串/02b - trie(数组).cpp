@@ -4,7 +4,11 @@ struct trie {
     int nex[MAXN][N];
     int tag[MAXN];
     int tot;
-
+    trie() {
+        memset(nex, 0, sizeof(nex));
+        memset(tag, 0, sizeof(tag));
+        tot = 0;
+    }
     void insert(const string &s) {
         int p = 0;
         for (char c : s) {
