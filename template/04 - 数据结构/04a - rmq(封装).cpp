@@ -1,16 +1,19 @@
 template <typename T>
 struct RMQ {
     int n;
-    vector<T> a;
-    vector<array<T, 30>> f;
-    function<T(T, T)> func;
-    RMQ(vector<T> _a) {
-        init(_a, [&](T a, T b) { return max(a, b); });
+    std::vector<T> a;
+    std::vector<std::array<T, 30>> f;
+    std::function<T(T, T)> func;
+
+    RMQ(std::vector<T> _a) {
+        init(_a, [](T a, T b) { return std::max(a, b); });
     }
-    RMQ(vector<T> _a, function<T(T, T)> _func) {
+
+    RMQ(std::vector<T> _a, std::function<T(T, T)> _func) {
         init(_a, _func);
     }
-    void init(vector<T> _a, function<T(T, T)> _func) {
+
+    void init(std::vector<T> _a, std::function<T(T, T)> _func) {
         a = _a;
         n = a.size();
         func = _func;
@@ -24,6 +27,7 @@ struct RMQ {
             }
         }
     }
+
     T query(int l, int r) {
         int k = 31 - __builtin_clz(r - l + 1);
         return func(f[l][k], f[r - (1 << k) + 1][k]);

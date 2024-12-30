@@ -1,5 +1,5 @@
 struct dsu {
-    vector<int> pa, sze;
+    std::vector<int> pa, sze;
     int connected;
     dsu() {}
     dsu(int n) {
@@ -8,13 +8,13 @@ struct dsu {
     void init(int n) {
         pa.resize(n);
         sze.assign(n, 1);
-        iota(pa.begin(), pa.end(), 0);
+        std::iota(pa.begin(), pa.end(), 0);
         connected = n;
     }
     void unite(int x, int y) {
         x = find(x), y = find(y);
         if (x == y) return;
-        if (sze[x] < sze[y]) swap(x, y);
+        if (sze[x] < sze[y]) std::swap(x, y);
         pa[y] = x;
         sze[x] += sze[y];
         connected--;
