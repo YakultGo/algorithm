@@ -1,7 +1,7 @@
 template <typename T>
 struct BIT {
     std::vector<T> tr;
-    BIT() {}
+    BIT() = default;
     BIT(int n) : tr(n + 10, 0) {}
     static inline int lowbit(int x) {
         return x & (-x);
