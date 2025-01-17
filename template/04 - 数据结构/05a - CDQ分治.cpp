@@ -77,7 +77,6 @@ int main() {
     std::cout.tie(nullptr);
     int n, k;
     std::cin >> n >> k;
-    BIT.k = k;
     for (int i = 1; i <= n; i++) std::cin >> e[i].a >> e[i].b >> e[i].c;
     std::sort(e + 1, e + n + 1, cmpA);
     int m = 0, t = 0;
